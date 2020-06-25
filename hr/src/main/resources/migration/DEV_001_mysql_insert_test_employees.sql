@@ -1,0 +1,18 @@
+--liquibase formatted sql
+--changeset author:mmordawski context:dev dbms:mysql
+
+DROP TABLE IF EXISTS `employee`;
+CREATE TABLE `employee` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `EMPLOYEE_STATUS` VARCHAR(255),
+  `FIRST_NAME` VARCHAR(100),
+  `LAST_NAME` VARCHAR(100),
+  `MOBILE` VARCHAR(255),
+   `POSITION` VARCHAR(255) NOT NULL,
+   PRIMARY KEY (ID)
+) AUTO_INCREMENT=100000;
+
+INSERT INTO `employee` (`EMPLOYEE_STATUS`, `FIRST_NAME`, `LAST_NAME`, `MOBILE`, `POSITION`) VALUES
+('EMPLOYEED', 'John', 'Doe', '123 456 789', 'ADMINISTRATOR'),
+('EMPLOYEED', 'Jack', 'Black', '987 654 321', 'COURIER'),
+('EMPLOYEED', 'Suzan', 'Wright', '789 456 123', 'SORTING');

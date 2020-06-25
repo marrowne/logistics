@@ -1,0 +1,39 @@
+{
+  "variables" : {
+    "region" : "us-east-1",
+    "source_ami" : "ami-0ff8a91507f77f867"
+  },
+  "builders" : [
+    {
+      "type" : "amazon-ebs",
+      "profile" : "default",
+      "region" : "{{user `region`}}",
+      "instance_type" : "t2.micro",
+      "source_ami" : "{{user `source_ami`}}",
+      "ssh_username" : "ec2-user",
+      "ami_name" : "jenkins-slave-30G",
+      "ami_description" : "Amazon Linux Image with Jenkins Server",
+      "launch_block_device_mappings": [
+        {
+          "device_name": "/dev/xvda",
+          "volume_size": 30,
+          "volume_type": "gp2",
+          "delete_on_termination": true
+        }
+      ],
+      "run_tags" : {
+        "Name" : "packer-builder-docker"
+      },
+      "tags" : {
+        "Tool" : "Packer"
+      }
+    }
+  ],
+  "provisioners" : [
+    {
+      "type" : "shell",
+      "script" : "./setup-slave.sh",
+      "execute_command" : "sudo -E -S sh '{{ .Path }}'"
+    }
+  ]
+}

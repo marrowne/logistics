@@ -1,0 +1,26 @@
+# CMake
+**/cmake-build-*/
+
+# JIRA plugin
+**/atlassian-ide-plugin.xml
+
+# IntelliJ
+**/out/
+**/.idea/
+**/*.iml
+**/*.ipr
+**/*.iws
+**/.idea_modules/
+
+# Crashlytics plugin
+**/com_crashlytics_export_strings.xml
+**/crashlytics.properties
+**/crashlytics-build.properties
+**/fabric.properties
+
+# Terraform
+**/.terraform/
+**/terraform.tfstate*
+
+# Targets
+**/target/
